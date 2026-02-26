@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 80% 6%;
+    --foreground: 190 60% 92%;
+
+    --card: 210 60% 10%;
+    --card-foreground: 190 60% 92%;
+
+    --popover: 210 60% 10%;
+    --popover-foreground: 190 60% 92%;
+
+    --primary: 174 72% 46%;
+    --primary-foreground: 210 80% 6%;
+
+    --secondary: 210 50% 16%;
+    --secondary-foreground: 190 60% 92%;
+
+    --muted: 210 40% 14%;
+    --muted-foreground: 200 20% 55%;
+
+    --accent: 6 78% 57%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 40% 18%;
+    --input: 210 40% 18%;
+    --ring: 174 72% 46%;
+
+    --radius: 0.75rem;
+
+    --ocean-deep: 210 80% 6%;
+    --ocean-mid: 200 65% 20%;
+    --ocean-light: 190 55% 35%;
+    --turquoise: 174 72% 46%;
+    --coral: 6 78% 57%;
+    --coral-soft: 16 85% 65%;
+    --sea-green: 160 60% 45%;
+    --warning: 45 93% 58%;
+    --glass: 210 60% 12%;
+
+    --sidebar-background: 210 80% 6%;
+    --sidebar-foreground: 190 60% 92%;
+    --sidebar-primary: 174 72% 46%;
+    --sidebar-primary-foreground: 210 80% 6%;
+    --sidebar-accent: 210 50% 16%;
+    --sidebar-accent-foreground: 190 60% 92%;
+    --sidebar-border: 210 40% 18%;
+    --sidebar-ring: 174 72% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-glass/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-primary/30 hover:shadow-primary/10 hover:shadow-2xl;
+  }
+
+  .ocean-gradient {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--ocean-deep)) 0%,
+      hsl(var(--ocean-mid)) 50%,
+      hsl(var(--ocean-deep)) 100%
+    );
+  }
+
+  .text-gradient-ocean {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--turquoise)), hsl(var(--ocean-light)));
+  }
+
+  .text-gradient-coral {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--coral)), hsl(var(--coral-soft)));
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px -5px hsl(var(--turquoise) / 0.3);
+  }
+
+  .glow-coral {
+    box-shadow: 0 0 30px -5px hsl(var(--coral) / 0.3);
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .reef-cell-danger {
+    background-color: hsl(var(--coral));
+  }
+  .reef-cell-warning {
+    background-color: hsl(var(--warning));
+  }
+  .reef-cell-moderate {
+    background-color: hsl(var(--ocean-light));
+  }
+  .reef-cell-healthy {
+    background-color: hsl(var(--sea-green));
+  }
+  .reef-cell-pristine {
+    background-color: hsl(var(--turquoise));
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-wave {
+    animation: wave 8s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(5px) rotate(1deg); }
+  75% { transform: translateX(-5px) rotate(-1deg); }
+}
